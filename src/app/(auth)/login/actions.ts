@@ -1,4 +1,4 @@
-"use seaver";
+"use server";
 
 import prisma from "@/lib/prisma";
 import { loginSchema, loginValue } from "@/lib/validations";
@@ -23,7 +23,7 @@ export async function login(
     });
     if (!existingUser) {
       return {
-        error: "Invalid username.",
+        error: "No user found.",
       };
     }
     if (!existingUser.passwordHash) {

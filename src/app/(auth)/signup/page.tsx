@@ -2,11 +2,12 @@ import { Metadata } from "next";
 import React from "react";
 import signUpImage from "@/assets/signup-image.jpg";
 import Image from "next/image";
+import Link from "next/link";
+import SignUpForm from "./SignUpForm";
 
 export const metadata: Metadata = {
   title: "Sign Up",
 };
-
 const page = () => {
   return (
     <main className="flex h-screen items-center justify-center p-5">
@@ -18,7 +19,12 @@ const page = () => {
               A place where <span className="italic">you</span> can't be alone.
             </p>
           </div>
-          <div className="space-y-5"></div>
+          <div className="space-y-5">
+            <SignUpForm />
+            <Link href={"/login"} className="block text-center hover:underline">
+              Already have an account? Click to login
+            </Link>
+          </div>
         </div>
         <Image
           src={signUpImage}
