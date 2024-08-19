@@ -1,13 +1,5 @@
 {
   "node": {
-    "8f57dd7aea9acd68a3e75833176ab39171027326": {
-      "workers": {
-        "app/(auth)/signup/page": "(action-browser)/./node_modules/next/dist/build/webpack/loaders/next-flight-action-entry-loader.js?actions=%5B%5B%22%2FUsers%2Fmuhammadaliyan%2FDocuments%2FProgramming%2FProgramming%2FTypeScript%2FNext-Social-Media-App%2Fsrc%2Fapp%2F(auth)%2Fsignup%2Factions.ts%22%2C%5B%22signUp%22%5D%5D%5D&__client_imported__=true!"
-      },
-      "layer": {
-        "app/(auth)/signup/page": "action-browser"
-      }
-    },
     "27041888b443b4b8c0e3959adb4eda7192223673": {
       "workers": {
         "app/(auth)/login/page": "(action-browser)/./node_modules/next/dist/build/webpack/loaders/next-flight-action-entry-loader.js?actions=%5B%5B%22%2FUsers%2Fmuhammadaliyan%2FDocuments%2FProgramming%2FProgramming%2FTypeScript%2FNext-Social-Media-App%2Fsrc%2Fapp%2F(auth)%2Flogin%2Factions.ts%22%2C%5B%22login%22%5D%5D%5D&__client_imported__=true!"
@@ -18,5 +10,5 @@
     }
   },
   "edge": {},
-  "encryptionKey": "BzBde5l8hapAjexuFqa4wlgh/DOs9rx7NETwAClJjsU="
+  "encryptionKey": "7G+06O7JummlgYUsc+a0LWqGN4jg3LsE2sCA0jGoYos="
 }

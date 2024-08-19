@@ -6,7 +6,7 @@ import Link from "next/link";
 import LoginForm from "./LoginForm";
 
 export const metadata: Metadata = {
-  title: "Sign Up",
+  title: "Login",
 };
 const page = () => {
   return (

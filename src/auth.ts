@@ -2,8 +2,9 @@ import { PrismaAdapter } from "@lucia-auth/adapter-prisma";
 import prisma from "./lib/prisma";
 import { Lucia } from "lucia";
 import { cache } from "react";
-import { Session, User } from "@prisma/client";
+import { Session } from "@prisma/client";
 import { cookies } from "next/headers";
+
 const adaptor = new PrismaAdapter(prisma.session, prisma.user);
 export const lucia = new Lucia(adaptor, {
   sessionCookie: {
@@ -29,6 +30,7 @@ declare module "lucia" {
     DatabaseUserAttributes: DatabaseUserAttributes;
   }
 }
+
 interface DatabaseUserAttributes {
   id: string;
   username: string;
@@ -37,10 +39,17 @@ interface DatabaseUserAttributes {
   googleId: string | null;
 }
 
+interface ExtendedSession extends Session {
+  id: string;
+  expiresAt: Date;
+  fresh: boolean;
+  userId: string;
+}
+
 export const validateRequest = cache(
   async (): Promise<{
     user: DatabaseUserAttributes | null;
-    session: Session | null;
+    session: ExtendedSession | null;
   }> => {
     const sessionId = cookies().get(lucia.sessionCookieName)?.value ?? null;
     if (!sessionId) {
@@ -78,9 +87,18 @@ export const validateRequest = cache(
           }
         : null;
 
+      const session = result.session
+        ? {
+            id: result.session.id,
+            expiresAt: result.session.expiresAt,
+            fresh: result.session.fresh,
+            userId: result.session.userId,
+          }
+        : null;
+
       return {
         user,
-        session: result.session,
+        session,
       };
     } catch (error) {
       console.log(error);
