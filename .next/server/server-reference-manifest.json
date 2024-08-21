@@ -1,16 +1,16 @@
 {
   "node": {
-    "27041888b443b4b8c0e3959adb4eda7192223673": {
+    "731508ac9cd8f827492b43bbf1a7d2326541a012": {
       "workers": {
-        "app/(auth)/login/page": "(action-browser)/./node_modules/next/dist/build/webpack/loaders/next-flight-action-entry-loader.js?actions=%5B%5B%22%2FUsers%2Fmuhammadaliyan%2FDocuments%2FProgramming%2FProgramming%2FTypeScript%2FNext-Social-Media-App%2Fsrc%2Fapp%2F(auth)%2Flogin%2Factions.ts%22%2C%5B%22login%22%5D%5D%5D&__client_imported__=true!"
+        "app/(main)/page": "(action-browser)/./node_modules/next/dist/build/webpack/loaders/next-flight-action-entry-loader.js?actions=%5B%5B%22%2FUsers%2Fmuhammadaliyan%2FDocuments%2FProgramming%2FProgramming%2FTypeScript%2FNext-Social-Media-App%2Fsrc%2Fcomponents%2Fposts%2Feditor%2Factions.ts%22%2C%5B%22submitPost%22%5D%5D%2C%5B%22%2FUsers%2Fmuhammadaliyan%2FDocuments%2FProgramming%2FProgramming%2FTypeScript%2FNext-Social-Media-App%2Fsrc%2Fapp%2F(auth)%2Factions.ts%22%2C%5B%22logout%22%5D%5D%5D&__client_imported__=true!"
       },
       "layer": {
-        "app/(auth)/login/page": "action-browser"
+        "app/(main)/page": "action-browser"
       }
     },
     "ebc6ecbab8d577922a2c2a7a60717e3b370b4784": {
       "workers": {
-        "app/(main)/page": "(action-browser)/./node_modules/next/dist/build/webpack/loaders/next-flight-action-entry-loader.js?actions=%5B%5B%22%2FUsers%2Fmuhammadaliyan%2FDocuments%2FProgramming%2FProgramming%2FTypeScript%2FNext-Social-Media-App%2Fsrc%2Fapp%2F(auth)%2Factions.ts%22%2C%5B%22logout%22%5D%5D%5D&__client_imported__=true!"
+        "app/(main)/page": "(action-browser)/./node_modules/next/dist/build/webpack/loaders/next-flight-action-entry-loader.js?actions=%5B%5B%22%2FUsers%2Fmuhammadaliyan%2FDocuments%2FProgramming%2FProgramming%2FTypeScript%2FNext-Social-Media-App%2Fsrc%2Fcomponents%2Fposts%2Feditor%2Factions.ts%22%2C%5B%22submitPost%22%5D%5D%2C%5B%22%2FUsers%2Fmuhammadaliyan%2FDocuments%2FProgramming%2FProgramming%2FTypeScript%2FNext-Social-Media-App%2Fsrc%2Fapp%2F(auth)%2Factions.ts%22%2C%5B%22logout%22%5D%5D%5D&__client_imported__=true!"
       },
       "layer": {
         "app/(main)/page": "action-browser"
@@ -18,5 +18,5 @@
     }
   },
   "edge": {},
-  "encryptionKey": "3w3PMpGVN8u4ZNaB/bdJEnHmiIxC3ToVEtFD3bAtqR0="
+  "encryptionKey": "oyfM1BF3WlGp+IH5zk9r7vbSV1r7B/GGQHDqR1NuuOQ="
 }
