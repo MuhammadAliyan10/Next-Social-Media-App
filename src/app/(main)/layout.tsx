@@ -9,13 +9,7 @@ export default async function Layout({
   children: React.ReactNode;
 }) {
   const { user, session } = await validateRequest();
-  if (
-    !session ||
-    !session.id ||
-    !session.expiresAt ||
-    !session.fresh ||
-    !session.userId
-  ) {
+  if (!session) {
     redirect("/login");
   }
 

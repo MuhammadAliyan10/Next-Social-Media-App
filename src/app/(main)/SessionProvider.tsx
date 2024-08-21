@@ -1,6 +1,7 @@
 "use client";
 import { User } from "lucia";
 import React, { createContext, useContext } from "react";
+import Navbar from "./Navbar";
 
 interface SessionContext {
   user: User | null;
@@ -26,6 +27,11 @@ export default function SessionProvider({
   value,
 }: React.PropsWithChildren<{ value: SessionContext }>) {
   return (
-    <SessionContext.Provider value={value}>{children}</SessionContext.Provider>
+    <SessionContext.Provider value={value}>
+      <div className="flex min-h-screen flex-col">
+        <Navbar />
+        <div className="mx-auto max-w-7xl p-5">{children}</div>
+      </div>
+    </SessionContext.Provider>
   );
 }

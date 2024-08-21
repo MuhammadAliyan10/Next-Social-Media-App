@@ -13,8 +13,8 @@ import {
 import { Input } from "@/components/ui/input";
 import { useState, useTransition } from "react";
 import { signUp } from "./actions";
-import { PasswordInput } from "@/components/ui/PasswordInput";
-import LoadingButton from "@/components/ui/LoadingButton";
+import { PasswordInput } from "@/components/PasswordInput";
+import LoadingButton from "@/components/LoadingButton";
 export default function SignUpForm() {
   const [error, setError] = useState<string>();
   const [isPending, startTransition] = useTransition();
