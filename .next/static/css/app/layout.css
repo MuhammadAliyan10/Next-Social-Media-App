@@ -695,6 +695,10 @@ video {
   margin-top: 0.75rem;
   margin-bottom: 0.75rem;
 }
+.mx-2 {
+  margin-left: 0.5rem;
+  margin-right: 0.5rem;
+}
 .ml-auto {
   margin-left: auto;
 }
@@ -709,6 +713,9 @@ video {
 }
 .mt-4 {
   margin-top: 1rem;
+}
+.ms-1 {
+  margin-inline-start: 0.25rem;
 }
 .line-clamp-1 {
   overflow: hidden;
@@ -1279,6 +1286,10 @@ video {
 .text-white {
   --tw-text-opacity: 1;
   color: rgb(255 255 255 / var(--tw-text-opacity));
+}
+.text-red-600 {
+  --tw-text-opacity: 1;
+  color: rgb(220 38 38 / var(--tw-text-opacity));
 }
 .underline-offset-4 {
   text-underline-offset: 4px;

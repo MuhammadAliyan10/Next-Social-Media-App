@@ -8,7 +8,11 @@ import { useSession } from "@/app/(main)/SessionProvider";
 import UserAvatar from "@/components/UserAvatar";
 import { Button } from "@/components/ui/button";
 import "./style.css";
+import { useState } from "react";
+import { Loader2 } from "lucide-react";
+
 export default function PostEditor() {
+  const [loading, setLoading] = useState<boolean>(false);
   const { user } = useSession();
   const editor = useEditor({
     extensions: [
@@ -27,8 +31,10 @@ export default function PostEditor() {
     }) || "";
 
   async function onSubmit() {
+    setLoading(true);
     await submitPost(input);
     editor?.commands.clearContent();
+    setLoading(false);
   }
 
   return (
@@ -43,10 +49,17 @@ export default function PostEditor() {
       <div className="flex justify-end">
         <Button
           onClick={onSubmit}
-          disabled={!input.trim()}
+          disabled={!input.trim() || loading}
           className="min-w-20"
         >
-          Post
+          {loading ? (
+            <div className="flex items-center justify-between">
+              <p className="text-white">Posting</p>
+              <Loader2 className="ms-1 size-4 animate-spin text-red-600" />
+            </div>
+          ) : (
+            "Post"
+          )}
         </Button>
       </div>
     </div>
