@@ -1,31 +1,71 @@
 "use client";
 
+import InfiniteScrollContainer from "@/components/InfiniteScrollContainer";
 import Post from "@/components/posts/Post";
+import { Button } from "@/components/ui/button";
 import kyInstance from "@/lib/Ky";
-import { PostData } from "@/lib/types";
-import { useQuery } from "@tanstack/react-query";
+import { PostData, PostsPage } from "@/lib/types";
+import { useInfiniteQuery, useQuery } from "@tanstack/react-query";
 import { Loader2 } from "lucide-react";
 
 export default function ForYouFeed() {
-  const query = useQuery<PostData[]>({
+  const {
+    data,
+    fetchNextPage,
+    hasNextPage,
+    isFetching,
+    isFetchingNextPage,
+    status,
+  } = useInfiniteQuery({
     queryKey: ["post-feed", "for-you"],
-    queryFn: kyInstance.get("/api/posts/for-you").json<PostData[]>,
+    queryFn: ({ pageParam }) =>
+      kyInstance
+        .get(
+          "/api/posts/for-you",
+          pageParam ? { searchParams: { cursor: pageParam } } : {},
+        )
+        .json<PostsPage>(),
+    initialPageParam: null as string | null,
+    getNextPageParam: (lastPage) => lastPage.nextCursor,
   });
-  if (query.status === "pending") {
+
+  const posts = data?.pages.flatMap((page) => page.posts) || [];
+  if (status === "pending") {
     return <Loader2 className="mx-auto animate-spin" />;
   }
-  if (query.status === "error") {
-    return (
-      <p className="text-center text-destructive">
-        An error occur: {query.error.message}
-      </p>
-    );
+  if (status === "error") {
+    return <p className="text-center text-destructive">An error occur</p>;
   }
   return (
-    <div className="space-y-5">
-      {query.data.map((post) => (
+    <InfiniteScrollContainer
+      className="space-y-5"
+      onBottomReached={() => hasNextPage && !isFetching && fetchNextPage()}
+    >
+      {posts.map((post) => (
         <Post post={post} key={post.id} />
       ))}
-    </div>
+      {/* Fetch using button */}
+      {/* {isFetchingNextPage ? (
+        <Loader2 className="mx-auto my-2 animate-spin" />
+      ) : (
+        <>
+          {hasNextPage ? (
+            <Button onClick={() => fetchNextPage()} disabled={isFetching}>
+              Load More
+            </Button>
+          ) : (
+            <p className="my-4 text-center text-muted-foreground">
+              You all caught up. Follow others to get more
+            </p>
+          )}
+        </>
+      )} */}
+      {isFetchingNextPage && <Loader2 className="mx-auto my-3 animate-spin" />}
+      {!hasNextPage && (
+        <p className="my-4 text-center text-muted-foreground">
+          You all caught up. Follow others to get more.
+        </p>
+      )}
+    </InfiniteScrollContainer>
   );
 }
