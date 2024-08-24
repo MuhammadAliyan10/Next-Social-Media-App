@@ -1699,11 +1699,11 @@ video {
   display: none;
 }
 
-.group:hover .group-hover\:opacity-100 {
+.group\/post:hover .group-hover\/post\:opacity-100 {
   opacity: 1;
 }
 
-.group\/post:hover .group-hover\/post\:opacity-100 {
+.group:hover .group-hover\:opacity-100 {
   opacity: 1;
 }
 
